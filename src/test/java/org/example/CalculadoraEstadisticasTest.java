@@ -64,4 +64,88 @@ class CalculadoraEstadisticasTest {
                 () -> calculadora.calcularPromedio(numeros)
         );
     }
+
+    @Test
+    void encontrarMaximo_conListaVacia_deberiaLanzarExcepcion() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> calculadora.encontrarMaximo(numeros)
+        );
+    }
+
+    @Test
+    void encontrarMinimo_deberiaRetornarElNumeroMenor() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of(5, 2, 9, 1);
+
+        // Act
+        int resultado = calculadora.encontrarMinimo(numeros);
+
+        // Assert
+        assertEquals(1, resultado);
+    }
+
+    @Test
+    void encontrarMinimo_conListaVacia_deberiaLanzarExcepcion() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> calculadora.encontrarMinimo(numeros)
+        );
+    }
+
+    @Test
+    void calcularMediana_conCantidadImpar_deberiaRetornarElDelMedio() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of(7, 1, 5);
+
+        // Act
+        double resultado = calculadora.calcularMediana(numeros);
+
+        // Assert
+        assertEquals(5.0, resultado);
+    }
+
+    @Test
+    void calcularMediana_conCantidadPar_deberiaRetornarPromedioDeLosDosDelMedio() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of(4, 1, 3, 2);
+
+        // Act
+        double resultado = calculadora.calcularMediana(numeros);
+
+        // Assert
+        assertEquals(2.5, resultado);
+    }
+
+    @Test
+    void calcularMediana_conListaVacia_deberiaLanzarExcepcion() {
+
+        // Arrange
+        CalculadoraEstadisticas calculadora = new CalculadoraEstadisticas();
+        List<Integer> numeros = List.of();
+
+        // Act & Assert
+        assertThrows(
+                IllegalArgumentException.class,
+                () -> calculadora.calcularMediana(numeros)
+        );
+    }
 }
